@@ -5,6 +5,7 @@ import com.example.restapi.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -15,11 +16,19 @@ public class ClienteService {
         this.repository = repository;
     }
 
-    public List<Cliente> listar() {
+    public List<Cliente> findAll() {
         return repository.findAll();
     }
 
-    public Cliente create(Cliente create) {
+    public Optional<Cliente> findById(long id) {
+        return repository.findById(id);
+    }
+
+    public Cliente save(Cliente create) {
         return repository.save(create);
+    }
+
+    public void deleteById(long id) {
+        repository.deleteById(id);
     }
 }
